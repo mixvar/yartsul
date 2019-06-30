@@ -58,14 +58,18 @@ const reducer: Reducer<State> = (state = initialState, action) => {
     return state;
 };
 
+/* store and middlewares are not affected by this lib */
+
+const store = ...
+
 /* create and dispatch actions */
 
-dispatch(Increment());
-dispatch(Increment(1)); // Type error!
+store.dispatch(Increment());
+store.dispatch(Increment(1)); // Type error!
 
-dispatch(Add(2));
-dispatch(Add('2')); // Type error!
-dispatch(Add()); // Type error!
+store.dispatch(Add(2));
+store.dispatch(Add('2')); // Type error!
+store.dispatch(Add()); // Type error!
 ```
 
 ## Similiar packages
