@@ -73,8 +73,9 @@
     ]
   },
   "prettier": {
-    "semi": false,
-    "singleQuote": true
+    "semi": true,
+    "singleQuote": true,
+    "tabWidth": 4
   },
   "commitlint": {
     "extends": [
