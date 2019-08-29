@@ -72,3 +72,27 @@ describe('isTypeOf', () => {
         expect(actionDefinition.isTypeOf(action)).toBe(false);
     });
 });
+
+describe('handler', () => {
+    it('should return void action handler object wrapping provided handler function', () => {
+        const actionType = 'TEST_ACTION';
+        const handlerFn = (state: number) => state + 1;
+        const actionDefinition = defineAction(actionType);
+
+        const result = actionDefinition.handler(handlerFn);
+
+        expect(result.actionType).toBe(actionType);
+        expect(result.handleAction).toBe(handlerFn);
+    });
+
+    it('should return payload action handler object wrapping provided handler function', () => {
+        const actionType = 'TEST_ACTION';
+        const handlerFn = (state: number, payload: number) => state + payload;
+        const actionDefinition = defineAction<number>(actionType);
+
+        const result = actionDefinition.handler(handlerFn);
+
+        expect(result.actionType).toBe(actionType);
+        expect(result.handleAction).toBe(handlerFn);
+    });
+});

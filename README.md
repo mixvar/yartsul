@@ -24,8 +24,8 @@ _Simple and 100% type safe actions and reducers with no boilerplate code 🎉_
 ## Usage
 
 ```ts
-import { defineAction } from 'yartsul';
-import { Reducer } from 'redux';
+import { defineAction, createReducer } from 'yartsul';
+import { createStore } from 'redux';
 
 /* define actions */
 
@@ -44,25 +44,18 @@ const initialState: State = {
     counter: 0
 };
 
-const reducer: Reducer<State> = (state = initialState, action) => {
-    if (Increment.isTypeOf(action)) {
-        // action payload type narrowed to undefined
-        return { ...state, counter: state.counter + 1 };
-    }
+const reducer = createReducer<State>(
+    initialState,
+    Increment.handler(state => ({ counter: state.count + 1 })),
 
-    if (Add.isTypeOf(action)) {
-        // action payload type narrowed to number
-        return { ...state, counter: state.counter + action.payload };
-    }
+    // state and amount types inferred to State and number
+    Add.handler((state, amount) => ({ counter: state.count + amount }))
+);
 
-    return state;
-};
+/* creating store and middlewares are not affected by this lib */
+const store = createStore(reducer);
 
-/* store and middlewares are not affected by this lib */
-
-const store = ...
-
-/* create and dispatch actions */
+/* create and dispatch some actions! */
 
 store.dispatch(Increment());
 store.dispatch(Increment(1)); // Type error!
