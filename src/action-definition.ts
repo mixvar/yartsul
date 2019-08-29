@@ -1,11 +1,4 @@
-interface UnknownAction {
-    readonly type: unknown;
-}
-
-interface Action<P> {
-    readonly type: string;
-    readonly payload: Readonly<P>;
-}
+import { Action, UnknownAction } from './types';
 
 interface VoidActionDefinition {
     readonly type: string;
@@ -26,12 +19,12 @@ export function defineAction<P>(type: string): VoidActionDefinition | PayloadAct
         return { type, payload };
     }
 
-    const utils = {
+    const properties = {
         type,
         isTypeOf(action: UnknownAction): action is Action<P> {
             return action.type === type;
         }
     };
 
-    return Object.assign(actionCreator, utils);
+    return Object.assign(actionCreator, properties);
 }
