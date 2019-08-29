@@ -13,10 +13,18 @@ describe('integration spec', () => {
 
     const reducer: Reducer<State> = createReducer(
         { count: 0 },
+
+        // either just return next state
         Actions.increment.handler(state => ({ count: state.count + 1 })),
         Actions.decrement.handler(state => ({ count: state.count - 1 })),
-        Actions.add.handler((state, amount) => ({ count: state.count + amount })),
-        Actions.subtract.handler((state, amount) => ({ count: state.count - amount }))
+
+        // or create next immutable state via mutation of state
+        Actions.add.handler((state, amount) => {
+            state.count = state.count + amount;
+        }),
+        Actions.subtract.handler((state, amount) => {
+            state.count = state.count - amount;
+        })
     );
 
     test('state is correctly updated', () => {
