@@ -38,18 +38,24 @@ const Add = defineAction<number>('Counter/Add');
 
 type State = {
     readonly counter: number;
+    readonly otherStuff: string;
 };
 
 const initialState: State = {
-    counter: 0
+    counter: 0,
+    otherStuff: ''
 };
 
 const reducer = createReducer<State>(
     initialState,
-    Increment.handler(state => ({ counter: state.count + 1 })),
 
-    // state and amount types inferred to State and number
-    Add.handler((state, amount) => ({ counter: state.count + amount }))
+    // you can just return the next state
+    Increment.handler(state => ({ ...state, counter: state.counter + 1 })),
+
+    // or mutate the provided state draft to create next state (see: immer.js)
+    Add.handler((state, amount) => {
+        state.counter = state.counter + amount;
+    })
 );
 
 /* creating store and middlewares are not affected by this lib */
