@@ -77,6 +77,8 @@ store.dispatch(Add('2')); // Type error!
 store.dispatch(Add()); // Type error!
 ```
 
+[see full API docs](https://mixvar.github.io/yartsul)
+
 ## Similiar packages
 
 -   [typesafe-actions](https://github.com/piotrwitek/typesafe-actions)
