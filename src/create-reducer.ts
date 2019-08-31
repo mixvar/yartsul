@@ -1,6 +1,13 @@
 import { produce } from 'immer';
 import { ActionHandler, Reducer, UnknownAction } from './types';
 
+/**
+ * Creates `redux` and `useReducer` compatible reducer function
+ * from given action handlers which are run thorught immer `produce` function to create next state.
+ *
+ * @param initialState
+ * @param handlers handlers created by `ActionDefinition.handler` function
+ */
 export function createReducer<S>(
     initialState: S,
     ...handlers: Array<ActionHandler<S, any>>
