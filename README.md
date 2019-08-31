@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/mixvar/yartsul.svg?branch=master)](https://travis-ci.org/mixvar/yartsul)
+[![Coverage Status](https://coveralls.io/repos/github/mixvar/yartsul/badge.svg?branch=master)](https://coveralls.io/github/mixvar/yartsul?branch=master)
+[![GitHub license](https://img.shields.io/github/license/mixvar/yartsul)](https://github.com/mixvar/yartsul/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/yartsul)](https://www.npmjs.com/package/yartsul)
+[![npm bundle size](https://img.shields.io/bundlephobia/min/yartsul)](https://bundlephobia.com/result?p=yartsul)
+
 # Yet Another Redux-TypeScript Utilities Library (yartsul)
 
 _Simple and 100% type safe actions and reducers with no boilerplate code 🎉_
