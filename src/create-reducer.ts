@@ -1,4 +1,4 @@
-import { produce, Draft } from 'immer';
+import { produce } from 'immer';
 import { ActionHandler, Reducer, UnknownAction } from './types';
 
 export function createReducer<S>(

@@ -5,7 +5,7 @@
   "keywords": [],
   "main": "dist/yartsul.umd.js",
   "module": "dist/yartsul.es5.js",
-  "typings": "dist/types/yartsul.d.ts",
+  "typings": "dist/types/src/yartsul.d.ts",
   "files": [
     "dist"
   ],
