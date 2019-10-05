@@ -9,7 +9,7 @@ interface VoidActionDefinition {
     /**
      * globally unique action type
      */
-    readonly type: string;
+    readonly actionType: string;
 
     /**
      * action creator function
@@ -40,7 +40,7 @@ interface PayloadActionDefinition<P> {
     /**
      * globally unique action type
      */
-    readonly type: string;
+    readonly actionType: string;
 
     /**
      * action creator function
@@ -86,7 +86,7 @@ export function defineAction<P>(type: string): VoidActionDefinition | PayloadAct
     }
 
     const properties = {
-        type,
+        actionType: type,
         isTypeOf(action: UnknownAction): action is Action<P> {
             return action.type === type;
         },

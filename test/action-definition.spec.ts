@@ -5,7 +5,7 @@ describe('defineAction', () => {
         const actionType = 'TEST_ACTION';
 
         const actionDefinition = defineAction(actionType);
-        expect(actionDefinition.type).toBe(actionType);
+        expect(actionDefinition.actionType).toBe(actionType);
 
         const action = actionDefinition();
         expect(action).toEqual({
@@ -18,7 +18,7 @@ describe('defineAction', () => {
         const actionType = 'TEST_ACTION';
 
         const actionDefinition = defineAction<void>(actionType);
-        expect(actionDefinition.type).toBe(actionType);
+        expect(actionDefinition.actionType).toBe(actionType);
 
         const action = actionDefinition();
         expect(action).toEqual({
@@ -32,7 +32,7 @@ describe('defineAction', () => {
         const payload = { theAnswer: 42 };
 
         const actionDefinition = defineAction<typeof payload>(actionType);
-        expect(actionDefinition.type).toBe(actionType);
+        expect(actionDefinition.actionType).toBe(actionType);
 
         const action = actionDefinition(payload);
         expect(action).toEqual({
