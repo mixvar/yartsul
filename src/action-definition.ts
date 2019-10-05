@@ -5,7 +5,7 @@ import { Action, UnknownAction, ActionHandler, DraftHandlerResult } from './type
  * Describes action with given type and no payload.
  * Can be used as action creator function and provides other utilities.
  */
-interface VoidActionDefinition {
+export interface VoidActionDefinition {
     /**
      * globally unique action type
      */
@@ -36,7 +36,7 @@ interface VoidActionDefinition {
  * Describes action with given type and payload type.
  * Can be used as action creator function and provides other utilities.
  */
-interface PayloadActionDefinition<P> {
+export interface PayloadActionDefinition<P> {
     /**
      * globally unique action type
      */
@@ -66,6 +66,8 @@ interface PayloadActionDefinition<P> {
     ): ActionHandler<S, P>;
 }
 
+export type ActionDefinition<P = unknown> = VoidActionDefinition | PayloadActionDefinition<P>;
+
 /**
  * Creates `VoidActionDefinition` object for given action type
  *
@@ -80,7 +82,7 @@ export function defineAction(type: string): VoidActionDefinition;
  */
 export function defineAction<P>(type: string): PayloadActionDefinition<P>;
 
-export function defineAction<P>(type: string): VoidActionDefinition | PayloadActionDefinition<P> {
+export function defineAction<P>(type: string): ActionDefinition<P> {
     function actionCreator(payload: P): Action<P> {
         return { type, payload };
     }
